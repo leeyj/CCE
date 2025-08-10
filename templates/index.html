@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCE 점검 시스템 - 메인</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+  <header>
+    <div>CCE 점검 시스템</div>
+    <div>
+      로그인: {{ session.get('username') }}
+      <a href="{{ url_for('logout') }}">로그아웃</a>
+    </div>
+  </header>
+
+  <div id="content">
+    <div id="left-menu">
+      <h2>메뉴</h2>
+      <button type="button" id="btn-history">이력 검색</button>
+	  <button id="btn-download-script">스크립트 다운로드</button>
+      <hr>
+
+      <h3>XML 업로드</h3>
+      <button id="btn-xml-upload">XML 업로드</button>
+    </div>
+
+    <div id="right-content">
+      <h2>통계 공간</h2>
+      <p>이곳에 점검 결과, 차트 등을 표시합니다.</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; max-width: 600px; font-family: Arial, sans-serif;">
+  <thead style="background-color: #2980b9; color: white;">
+    <tr>
+      <th>구분</th>
+      <th>다운로드 링크</th>
+      <th>버전</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VM,Linux,Container</td>
+	  <td>
+        <a href="{{ url_for('download_static', filename='linux.zip') }}"  download="linux.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
+          linux용 다운로드
+        </a>
+      </td>
+      <td>1.0</td>
+    </tr>
+	<tr>
+	 <td>WEB-NGINX</td>
+	 <td>
+	    <a href="{{ url_for('download_static', filename='nginx.zip') }}"  download="nginx.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
+		  nginx용 다운로드
+		  </a>
+	  </td>
+	  <td>1.0</td>
+  </tbody>
+</table>

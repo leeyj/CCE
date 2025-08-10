@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>업로드 이력</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+  <h2>업로드 이력 (파일 단위, 최근 50개)</h2>
+
+  <table id="records-table" role="table"  aria-label="업로드 이력 목록">
+    <thead>
+      <tr>
+        <th scope="col">순번(최근순)</th>
+		<th scope="col">플랫폼</th> <!-- 추가 -->
+        <th scope="col">업로드 일시</th>
+        <th scope="col">파일명</th>
+		<th scope="col">IP주소</th>
+        <th scope="col">상세 보기</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for f in files %}
+      <tr>
+        <td>{{ f.id }}</td>
+		<td>{{ f.systems }}</td>
+        <td>{{ f.upload_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+        <td>{{ f.filename }}</td>
+		<td>
+        {% if f.ip_addresses %}
+          <ul>
+            {% for ip in f.ip_addresses %}
+              <li>{{ ip.ip }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          없음
+        {% endif %}
+      </td>
+      
+        <td>
+          <button 
+            class="btn-view-content" 
+            data-file-id="{{ f.id }}">
+            내용보기
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+	<div class="pagination" style="display:flex; justify-content:center; align-items:center; gap:10px;">
+    {% if pagination.has_prev %}
+        <a href="{{ url_for('records_content', page=pagination.prev_num) }}">이전</a>
+    {% endif %}
+
+    <span>페이지 {{ pagination.page }} / {{ pagination.pages }}</span>
+
+    {% if pagination.has_next %}
+        <a href="{{ url_for('records_content', page=pagination.next_num) }}">다음</a>
+    {% endif %}
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCE 점검 결과</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="results-header">
+  <h2>CCE 점검 결과</h2>
+  <div class="action-btns">
+    <button id="btn-back-prev" type="button">← 이전 화면</button>
+    <button id="btn-download-csv" type="button">CSV 다운로드</button>
+  </div>
+</div>
+{% if ip_addresses %}
+  <section class="ip-address-list" style="margin-bottom: 20px;">
+    <strong>추출된 IP 주소:</strong>
+    <ul>
+      {% for ip in ip_addresses %}
+        <li>{{ ip }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+{% endif %}
+
+  <table id="results-table" class="common-table" role="table" aria-label="CCE 점검 결과 목록">
+    <thead>
+      <tr>
+        <th scope="col">항목 ID</th>
+        <th scope="col">결과</th>
+        <th scope="col">설명</th>
+        <th scope="col">상세 데이터</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for res in results %}
+      <tr
+	  class="
+      {% if res.result|lower == 'good' %}result-good{% elif res.result|lower == 'weak' %}result-weak{% elif res.result|lower == 'info' %}result-info{% endif %}
+		"
+	  >
+        <td>{{ res.id }}</td>
+        <td>{{ res.result }}</td>
+        <td>{{ res.comment }}</td>
+        <td>
+          <span class="toggle-btn" role="button" tabindex="0" aria-expanded="false" aria-controls="data-{{ loop.index }}" 
+                onkeydown="if(event.key==='Enter'||event.key===' ') toggleData('data-{{ loop.index }}');"
+                onclick="toggleData('data-{{ loop.index }}')">▼</span>
+          <div id="data-{{ loop.index }}" class="data-content" style="display:none;">
+            {{ res.data }}
+			
+          
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+</body>
+</html>

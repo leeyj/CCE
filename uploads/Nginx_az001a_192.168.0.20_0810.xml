@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CSAP-CCE>
+<Info>
+<DATA><![CDATA[
+스크립트 실행 시간
+2025-08-10 00:44:08
+
+hostname
+az001a
+
+Linux Version
+6.5.0-142312122121-generic
+
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04
+DISTRIB_CODENAME=jammy
+DISTRIB_DESCRIPTION="Ubuntu 22.04.5 LTS"
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+
+]]> </DATA>
+</Info>
+<ipAddress> <![CDATA[
+enx00e04c683587: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.20  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::2e0:4cff:fe68:3587  prefixlen 64  scopeid 0x20<link>
+        ether 00:e0:4c:68:35:87  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 90474533  bytes 55590792647 (55.5 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 90474533  bytes 55590792647 (55.5 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp1s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 50:c2:e8:4c:ba:8f  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+]]> </ipAddress>
+<Code id="WM-01">
+<Result>Info</Result>
+<Comment> 기본 디렉터리를 별도의 디렉터리로 지정하였는지 확인필요</Comment>
+<DATA><![CDATA[
+---------------------------------------------------
+-rw-r--r-- 1 root root 1447 May 31  2023 /etc/nginx/nginx.conf
+---------------------------------------------------
+기본 디렉터리 설정값이 없음.
+
+]]></DATA>
+</Code>
+<Code id="WM-02">
+<Result>Info</Result>
+<Comment> 운영 상 불필요한 파일의 존재 여부 확인필요</Comment>
+<DATA><![CDATA[
+---------------------------------------------------
+설치 경로 하위 디렉터리 확인
+---------------------------------------------------
+  total 80
+  drwxr-xr-x   8 root root  4096 Jul 17 16:41 .
+  drwxr-xr-x 135 root root 12288 Aug  1 06:13 ..
+  drwxr-xr-x   2 root root  4096 Feb 15 03:40 conf.d
+  -rw-r--r--   1 root root  1125 May 31  2023 fastcgi.conf
+  -rw-r--r--   1 root root  1055 May 31  2023 fastcgi_params
+  -rw-r--r--   1 root root  2837 May 31  2023 koi-utf
+  -rw-r--r--   1 root root  2223 May 31  2023 koi-win
+  -rw-r--r--   1 root root  3957 May 31  2023 mime.types
+  drwxr-xr-x   2 root root  4096 Feb 15 03:40 modules-available
+  drwxr-xr-x   2 root root  4096 Jun 16 12:32 modules-enabled
+  -rw-r--r--   1 root root  1447 May 31  2023 nginx.conf
+  -rw-r--r--   1 root root   180 May 31  2023 proxy_params
+  -rw-r--r--   1 root root   636 May 31  2023 scgi_params
+  drwxr-xr-x   2 root root  4096 Jun 16 17:59 sites-available
+  drwxr-xr-x   2 root root  4096 Jun 16 12:31 sites-enabled
+  drwxr-xr-x   2 root root  4096 Jun 16 12:31 snippets
+  -rw-r--r--   1 root root   664 May 31  2023 uwsgi_params
+  -rw-r--r--   1 root root  3071 May 31  2023 win-utf
+//DIRED// 57 58 105 107 154 160 207 219 266 280 327 334 381 388 435 445 492 509 556 571 618 628 675 687 734 745 792 807 854 867 914 922 969 981 1028 1035
+//DIRED-OPTIONS// --quoting-style=literal
+]]></DATA>
+</Code>
+<Code id="WM-03">
+<Comment> 링크 사용금지</Comment>
+<Result>Weak</Result>
+[Comment]: 심볼릭 링크에 대한 Disable 설정이 존재하지 않으므로 취약
+<DATA><![CDATA[
+---------------------------------------------------
+-rw-r--r-- 1 root root 1447 May 31  2023 /etc/nginx/nginx.conf
+---------------------------------------------------
+심볼릭 링크에 대한 Disable 설정값이 없음.
+
+
+[Check]: 심볼릭 링크, aliases 사용이 금지되어 있으면 양호
+※ 심볼릭 링크 사용금지 설정이 on시 양호, 설정이 없으면 취약
+※ Default: disable_symlinks off 설정
+
+※ <nginx 설정파일 구조>
+※   http{
+※    server{
+※     location{}}}
+]]></DATA>
+</Code>
+<Code id="WM-04">
+<Comment> 파일 업로드 및 다운로드 제한</Comment>
+<Result>Good</Result>
+<Comment> 파일 업로드 및 다운로드 용량을 제한설정이 적용되어 있으므로 양호</Comment>
+<DATA><![CDATA[
+---------------------------------------------------
+-rw-r--r-- 1 root root 1447 May 31  2023 /etc/nginx/nginx.conf
+---------------------------------------------------
+파일 업로드 및 다운로드 용량 제한 설정값이 없음.
+
+[Check]: 파일 업로드 및 다운로드 용량이 제한되어 있으면 양호
+※ Default: client_max_body_size 1m;
+]]></DATA>
+</Code>
+<Code id="WM-05">
+<Result>Good</Result>
+<Comment> 디렉터리 리스팅이 제거되어 있으므로 양호</Comment>
+<DATA><![CDATA[
+---------------------------------------------------
+-rw-r--r-- 1 root root 1447 May 31  2023 /etc/nginx/nginx.conf
+---------------------------------------------------
+디렉터리 리스팅 설정값이 없음.
+
+
+[Check]: 디렉터리 리스팅 설정이 제거되어 있으면 양호
+※ 디렉터리 리스팅 설정이 없거나, off시 양호
+※ Default: autoindex off;
+※ 하위의 블록에서 선언된 지시어가 없다면 상위 선언으로 적용됨
+※ 하위의 블록에서 선언된 지시어가 있다면 상위 선언을 무시하고 적용됨
+======================================================================================
+
+]]> </DATA>
+</Code>
+<Code id="WM-06">
+<Result>Info</Result>
+<Comment>웹 프로세스 권한 확인필요</Comment>
+<DATA><![CDATA[
+---------------------------------------------------
+Nginx 프로세스 확인
+---------------------------------------------------
+az001a    910480  910323  0 00:44 pts/0    00:00:00 /bin/bash ./nginx.sh
+
+---------------------------------------------------
+Nginx 데몬 user 확인
+---------------------------------------------------
+user www-data;
+#	# pop3_capabilities "TOP" "USER";
+
+[Check]: 웹 서버 프로세스 데몬이 root 권한으로 구동되지 않으면 양호
+※ Default: nobody로 설정됨
+======================================================================================
+]]> </DATA>
+</Code>
+<Code id="WM-07">
+<Result>Info</Result>
+<Commnet>최신 패치 적용 여부 확인필요</Commnet>
+<DATA><![CDATA[
+---------------------------------------------------
+소스 버전
+---------------------------------------------------
+소스 설치 아님
+
+---------------------------------------------------
+패키지 버전
+---------------------------------------------------
+1.18.0-6ubuntu14.6
+
+[Check]: 최신 패치가 적용되어 있으면 양호
+======================================================================================
+
+]]> </DATA>
+</Code>
+Nginx 진단 종료
+<Information>
+<DATA><![CDATA[
+---------------------------------------------------
+-rw-r--r-- 1 root root 1447 May 31  2023 /etc/nginx/nginx.conf
+---------------------------------------------------
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+	worker_connections 768;
+	# multi_accept on;
+}
+
+http {
+
+	##
+	# Basic Settings
+	##
+
+	sendfile on;
+	tcp_nopush on;
+	types_hash_max_size 2048;
+	# server_tokens off;
+
+	# server_names_hash_bucket_size 64;
+	# server_name_in_redirect off;
+
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
+
+	##
+	# SSL Settings
+	##
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+	ssl_prefer_server_ciphers on;
+
+	##
+	# Logging Settings
+	##
+
+	access_log /var/log/nginx/access.log;
+	error_log /var/log/nginx/error.log;
+
+	##
+	# Gzip Settings
+	##
+
+	gzip on;
+
+	# gzip_vary on;
+	# gzip_proxied any;
+	# gzip_comp_level 6;
+	# gzip_buffers 16 8k;
+	# gzip_http_version 1.1;
+	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+	##
+	# Virtual Host Configs
+	##
+
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
+}
+
+
+#mail {
+#	# See sample authentication script at:
+#	# http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+#
+#	# auth_http localhost/auth.php;
+#	# pop3_capabilities "TOP" "USER";
+#	# imap_capabilities "IMAP4rev1" "UIDPLUS";
+#
+#	server {
+#		listen     localhost:110;
+#		protocol   pop3;
+#		proxy      on;
+#	}
+#
+#	server {
+#		listen     localhost:143;
+#		protocol   imap;
+#		proxy      on;
+#	}
+#}
+======================================================================================
+
+]]> </DATA>
+</Information>
+</CSAP-CCE>

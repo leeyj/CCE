@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CCE 점검 시스템 - 로그인</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <style>
+    /* 로그인 전용 추가 스타일 */
+    .login-container {
+      max-width: 400px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-container h1 {
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: #34495e;
+      text-align: center;
+    }
+
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .login-container label {
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: 1.8px solid #ccc;
+      border-radius: 8px;
+      transition: border-color 0.2s ease;
+      outline-offset: 2px;
+      outline-color: transparent;
+    }
+
+    .login-container input[type="text"]:focus,
+    .login-container input[type="password"]:focus {
+      border-color: #2980b9;
+      outline-color: #2980b9;
+    }
+
+    .login-container button[type="submit"] {
+      margin-top: 10px;
+      padding: 12px 0;
+      background-color: #2980b9;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(41, 128, 185, 0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container button[type="submit"]:hover {
+      background-color: #1f618d;
+      box-shadow: 0 6px 18px rgba(31, 97, 141, 0.7);
+    }
+
+    .login-container button[type="submit"]:active {
+      background-color: #1b4f72;
+      box-shadow: 0 3px 10px rgba(27, 79, 114, 0.8);
+    }
+
+    /* 메시지 출력 스타일 */
+    .flash-message {
+      background-color: #fce4e4;
+      color: #b00020;
+      font-weight: 600;
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #b00020;
+      user-select: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h1>CCE 점검 시스템 로그인</h1>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-message" role="alert" aria-live="assertive">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('login') }}" novalidate>
+      <label for="username">아이디</label>
+      <input type="text" id="username" name="username" placeholder="아이디를 입력하세요" required autocomplete="username" />
+
+      <label for="password">비밀번호</label>
+      <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required autocomplete="current-password" />
+
+      <button type="submit">로그인</button>
+    </form>
+  </div>
+
+</body>
+</html>
