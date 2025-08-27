@@ -56,13 +56,49 @@ function loadRightContent(url, errorMessage) {
     .then(resp => resp.text())
     .then(html => {
       rightContent.innerHTML = html;
-      // 업로드 폼이 포함되어 있으면 제출 이벤트 리스너 설정
+      // 업로드 폼 이벤트 등록
       setupUploadFormSubmission(rightContent);
+      // 자산 등록 폼 이벤트 등록
+      setupAssetFormSubmission(rightContent);
+      // 검색 기능 초기화 (검색창 이벤트 연결)
+	  setupUserRegiFormSubmission(rightContent);  // 새로 추가. 사용자 등록 폼
+      setupSearchFiltering();
     })
     .catch(() => {
       rightContent.innerHTML = `<p>${errorMessage}</p>`;
     });
 }
+
+
+// 사용자 등록 폼 AJAX 제출 처리 함수 추가
+function setupUserRegiFormSubmission(rightContent) {
+  const userForm = rightContent.querySelector('#user-regi-form');
+  if (!userForm) return;
+
+  userForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const formData = new FormData(userForm);
+
+    fetch('/user_regi', {
+      method: 'POST',
+      body: formData
+    })
+    .then(resp => resp.text())
+    .then(html => {
+      rightContent.innerHTML = html;
+      setupUserRegiFormSubmission(rightContent);
+      setupUploadFormSubmission(rightContent);
+      setupAssetFormSubmission(rightContent);
+      setupSearchFiltering();
+    })
+    .catch(() => {
+      rightContent.innerHTML = '<p>사용자 등록 중 오류가 발생했습니다.</p>';
+    });
+  });
+}
+
+
 
 // 업로드 폼 Ajax 제출 처리 및 이벤트 등록 함수
 function setupUploadFormSubmission(rightContent) {
@@ -94,13 +130,61 @@ function setupUploadFormSubmission(rightContent) {
       .then(resp => resp.text())
       .then(html => {
         rightContent.innerHTML = html;
-        // 서버 응답에 새 업로드 폼이 포함될 수 있으니 재설정
         setupUploadFormSubmission(rightContent);
       })
       .catch(() => {
         rightContent.innerHTML = '<p>업로드 및 결과 처리 중 오류가 발생했습니다.</p>';
       });
   });
+}
+
+// 자산 등록 폼 AJAX 제출 처리 함수
+function setupAssetFormSubmission(rightContent) {
+  const assetForm = rightContent.querySelector('#asset-form');
+  if (!assetForm) return;
+
+  assetForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(assetForm);
+
+    fetch('/asset_info', {
+      method: 'POST',
+      body: formData
+    })
+    .then(resp => resp.text())
+    .then(html => {
+      rightContent.innerHTML = html;
+      setupAssetFormSubmission(rightContent);
+      setupUploadFormSubmission(rightContent);
+      setupSearchFiltering(); // 재설정
+    })
+    .catch(() => {
+      rightContent.innerHTML = '<p>자산 등록 중 오류가 발생했습니다.</p>';
+    });
+  });
+}
+
+// 검색 필터링 초기화 함수
+function setupSearchFiltering() {
+  const searchInput = document.getElementById('search-input');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', () => {
+  const filter = searchInput.value.trim().toLowerCase();
+  const table = document.querySelector('table.asset-info tbody');
+  if (!table) return;
+  const rows = table.querySelectorAll('tr');
+
+  rows.forEach(row => {
+    // 행 전체 텍스트를 한 번에 확인
+    const rowText = row.innerText.trim().toLowerCase();
+    if (rowText.includes(filter)) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+});
 }
 
 // DOMContentLoaded 내 핵심 이벤트 리스너 등록
@@ -110,6 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnHistory = document.getElementById('btn-history');
   const btnDownloadScript = document.getElementById('btn-download-script');
   const btnXmlUpload = document.getElementById('btn-xml-upload');
+  const btnassetregister = document.getElementById('btn-asset-register');
+  const btnUserRegister = document.getElementById('btn-user-register');
 
   if (btnHistory) {
     btnHistory.addEventListener('click', () => {
@@ -128,6 +214,20 @@ document.addEventListener('DOMContentLoaded', () => {
       loadRightContent('/xml_upload_content', '업로드 폼을 불러오는 중 오류가 발생했습니다.');
     });
   }
+
+  if (btnassetregister) {
+    btnassetregister.addEventListener('click', () => {
+      loadRightContent('/asset_info', '자산정보 폼을 불러오는 중 오류가 발생했습니다.');
+    });
+  }
+  
+  if (btnUserRegister) {
+    btnUserRegister.addEventListener('click', () => {
+      loadRightContent('/user_regi', '사용자 등록 폼을 불러오는 중 오류가 발생했습니다.');
+    });
+  }
+  
+  
 
   // 버튼 위임 이벤트 처리: 내용보기, 이전 화면, CSV 다운로드
   document.body.addEventListener('click', e => {
@@ -148,10 +248,19 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    if (target.id === 'regi_asset') {
+      e.preventDefault();
+      loadRightContent('/asset_info', '자산정보 폼을 불러오는 중 오류가 발생했습니다.');
+      return;
+    }
+
     if (target.id === 'btn-download-csv') {
       e.preventDefault();
       downloadTableAsCSV('cce_results.csv');
       return;
     }
   });
+
+  // 최초 페이지에 검색 기능 적용(이미 로드된 상태일 경우)
+  setupSearchFiltering();
 });

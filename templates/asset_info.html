@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>자산정보 등록</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <form method="post">
+        <button id="regi_asset_sidebar" type="submit">자산 등록</button>
+      </form>
+    </div>
+    <div class="main">
+      <form id="asset-form" method="post" action="{{ url_for('asset_info') }}">
+        <div>
+          <div class="form-row">
+            <label for="asset_type">자산종류:</label>
+            <select name="asset_type" id="asset_type" required>
+              <option value="">선택</option>
+              <option value="server">서버</option>
+              <option value="cloud">클라우드</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="ip_address">IP:</label>
+            <input type="text" name="ip_address" id="ip_address" required />
+          </div>
+
+          <div class="form-row">
+            <label for="platform">플렛폼:</label>
+            <select name="platform" id="platform" required>
+              <option value="">선택</option>
+              <option value="OS">OS</option>
+              <option value="WEB">WEB</option>
+              <option value="WAS">WAS</option>
+              <option value="DB">DB</option>
+              <option value="CONTAINER">CONTAINER</option>
+              <option value="VM">VM</option>
+              <option value="mgnt">mgnt</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="purpose">용도:</label>
+            <input type="text" name="purpose" id="purpose" />
+          </div>
+
+          <div class="form-row">
+            <label for="manager_main">관리자(정):</label>
+            <input type="text" name="manager_main" id="manager_main" />
+          </div>
+
+          <div class="form-row">
+            <label for="manager_sub">관리자(부):</label>
+            <input type="text" name="manager_sub" id="manager_sub" />
+          </div>
+
+          <div class="form-row">
+            <label for="memo">메모:</label>
+            <input type="text" name="memo" id="memo" />
+          </div>
+        </div>
+        <button id="regi_asset_main" type="submit">자산 등록</button>
+      </form>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      <h3>자산 목록</h3>
+	  <div style="display:flex; justify-content:flex-end; margin-bottom:10px;">
+	  <label for="search-input" style="margin-right:5px;">검색:</label>
+	  <input type="text" id="search-input" placeholder="IP, 플렛폼, 관리자 이름 검색" />
+	</div>
+
+      <table class="asset-info">
+        <thead>
+          <tr>
+            <th>순번</th><th>자산종류</th><th>IP</th><th>플렛폼</th><th>용도</th>
+            <th>관리자(정)</th><th>관리자(부)</th><th>메모</th><th>수정</th><th>삭제</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for asset in assets %}
+            <tr>
+              <td data-label="순번">{{ asset.id }}</td>
+              <td data-label="자산종류">{{ asset.asset_type }}</td>
+              <td data-label="IP">{{ asset.ip_address }}</td>
+              <td data-label="플렛폼">{{ asset.platform }}</td>
+              <td data-label="용도">{{ asset.purpose }}</td>
+              <td data-label="관리자(정)">{{ asset.manager_main }}</td>
+              <td data-label="관리자(부)">{{ asset.manager_sub }}</td>
+              <td data-label="메모">{{ asset.memo }}</td>
+              <td data-label="수정">
+                <form action="{{ url_for('asset_edit', asset_id=asset.id) }}" method="get" style="display:inline;">
+                  <button type="submit">수정</button>
+                </form>
+              </td>
+              <td data-label="삭제">
+                <form action="{{ url_for('asset_delete', asset_id=asset.id) }}" method="post" style="display:inline;" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+                  <button type="submit">삭제</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

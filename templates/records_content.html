@@ -14,7 +14,8 @@
     <thead>
       <tr>
         <th scope="col">순번(최근순)</th>
-		<th scope="col">플랫폼</th> <!-- 추가 -->
+		<th scope="col">등록인</th>
+		<th scope="col">플랫폼</th> 
         <th scope="col">업로드 일시</th>
         <th scope="col">파일명</th>
 		<th scope="col">IP주소</th>
@@ -25,6 +26,7 @@
       {% for f in files %}
       <tr>
         <td>{{ f.id }}</td>
+		<td>{{ f.reg_name }}</td>
 		<td>{{ f.systems }}</td>
         <td>{{ f.upload_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
         <td>{{ f.filename }}</td>

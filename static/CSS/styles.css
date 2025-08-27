@@ -319,5 +319,178 @@ tr.result-weak {
   line-height: 1.5;
 }
 
+/* asset_info 테이블 모던 스타일 */
+table.asset-info {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table.asset-info th,
+table.asset-info td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+table.asset-info thead {
+  background-color: #007bff; /* 모던 블루톤 */
+  color: white;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+table.asset-info tbody tr:hover {
+  background-color: #f5faff;
+  cursor: pointer;
+}
+
+/* 반응형: 모바일에서 가독성 높이기 */
+@media (max-width: 600px) {
+  table.asset-info, table.asset-info thead, table.asset-info tbody, table.asset-info th, table.asset-info td, table.asset-info tr {
+    display: block;
+  }
+
+  table.asset-info thead tr {
+    display: none;
+  }
+
+  table.asset-info tbody tr {
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  table.asset-info tbody td {
+    padding-left: 50%;
+    text-align: right;
+    position: relative;
+  }
+
+  table.asset-info tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 16px;
+    font-weight: 600;
+    text-align: left;
+  }
+}
+
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .form-row label {
+    flex: 0 0 120px; /* 라벨 고정 너비 */
+    font-weight: 600;
+    color: #333;
+  }
+  .form-row select,
+  .form-row input[type="text"] {
+    flex: 1 1 200px;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+  }
+  .form-row select:focus,
+  .form-row input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+  }
+
+
+/* user_regi.html 모던 폼 스타일 */
+.user-regi-form {
+  max-width: 500px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: #fff;
+  padding: 30px 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.user-regi-form h2 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #007bff;
+}
+
+.user-regi-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.user-regi-form input[type="text"],
+.user-regi-form input[type="number"],
+.user-regi-form input[type="lv"],
+.user-regi-form input[type="password"] {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+.user-regi-form input[type="text"]:focus,
+.user-regi-form input[type="number"]:focus,
+.user-regi-form input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.user-regi-form button[type="submit"] {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1.1em;
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.user-regi-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.user-regi-form p.message {
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.user-regi-form p.message.error {
+  color: #dc3545;
+}
+
+.user-regi-form p.message.success {
+  color: #28a745;
+}
+
+
 
 

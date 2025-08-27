@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head><title>자산정보 수정</title></head>
+<body>
+  <h3>자산정보 수정</h3>
+  <form method="post">
+    <label>자산종류:
+      <select name="asset_type" required>
+        <option value="server" {% if asset.asset_type == 'server' %}selected{% endif %}>서버</option>
+        <option value="cloud" {% if asset.asset_type == 'cloud' %}selected{% endif %}>클라우드</option>
+      </select>
+    </label><br><br>
+    <label>IP: <input type="text" name="ip_address" value="{{ asset.ip_address }}" required></label><br><br>
+    <label>플렛폼:
+      <select name="platform" required>
+        <option value="OS" {% if asset.platform == 'OS' %}selected{% endif %}>OS</option>
+        <option value="WEB" {% if asset.platform == 'WEB' %}selected{% endif %}>WEB</option>
+        <option value="WAS" {% if asset.platform == 'WAS' %}selected{% endif %}>WAS</option>
+        <option value="DB" {% if asset.platform == 'DB' %}selected{% endif %}>DB</option>
+        <option value="CONTAINER" {% if asset.platform == 'CONTAINER' %}selected{% endif %}>CONTAINER</option>
+        <option value="VM" {% if asset.platform == 'VM' %}selected{% endif %}>VM</option>
+        <option value="mgnt" {% if asset.platform == 'mgnt' %}selected{% endif %}>mgnt</option>
+      </select>
+    </label><br><br>
+    <label>용도: <input type="text" name="purpose" value="{{ asset.purpose }}"></label><br><br>
+    <label>관리자(정): <input type="text" name="manager_main" value="{{ asset.manager_main }}"></label><br>
+    <label>관리자(부): <input type="text" name="manager_sub" value="{{ asset.manager_sub }}"></label><br><br>
+    <label>메모: <input type="text" name="memo" value="{{ asset.memo }}"></label><br><br>
+    <button type="submit">저장</button>
+    <a href="{{ url_for('asset_info') }}">취소</a>
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+</body>
+</html>

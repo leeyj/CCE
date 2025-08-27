@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSAP-CCE>
+  <info>
+    <index>K8S-MASTER</index>
+    <IPAddress>172.25.1.144</IPAddress>
+    <HOSTNAME>cocktail-master01</HOSTNAME>
+  </info>
+  <CODE Id="KM-01">
+    <Comment>API server 비인증 접근 차단</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+    - --service-account-lookup=true
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-02">
+    <Comment>API server 취약한 방식의 인증사용 제한</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-03">
+    <Comment>API server 서비스 API 외부 오픈 금지</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-04">
+    <Comment>API server 권한 제어</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-05">
+    <Comment>Admission Control Plugin 설정</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-06">
+    <Comment>API server SSL/TLS 적용</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    - --client-ca-file=/etc/kubernetes/pki/ca.crt
+    - --kubelet-certificate-authority=/etc/kubernetes/pki/ca.crt
+    - --kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt
+    - --kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key
+    - --secure-port=6443
+    - --service-account-key-file=/etc/kubernetes/pki/sa.pub
+    - --tls-cert-file=/etc/kubernetes/pki/apiserver.crt
+    - --tls-private-key-file=/etc/kubernetes/pki/apiserver.key
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-07">
+    <Comment>API server 로그 관리</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-08">
+    <Comment>Controller 인증 제어</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-09">
+    <Comment>Controller Manager SSL/TLS 적용</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-10">
+    <Comment>etcd 암호화 적용</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-11">
+    <Comment>etcd SSL/TLS 적용</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-12">
+    <Comment>컨테이너 권한 제어</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-13">
+    <Comment>네임스페이스 공유 금지</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-14">
+    <Comment>환경설정 파일 권한 설정</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-15">
+    <Comment>인증서 파일 권한 설정</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-16">
+    <Comment>etcd 데이터 디렉터리 권한 설정</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+  <CODE Id="KM-17">
+    <Comment>최신 보안 패치 적용</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+    ]]></DATA>
+  </CODE>
+</CSAP-CCE>

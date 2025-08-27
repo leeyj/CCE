@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSAP-CCE>
+  <IPAddress>127.0.0.1</IPAddress>
+  <CODE id="SYS-INFO">
+    <Comment>시스템 기본 정보 / OS 커널/배포판/아키텍처 출력</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+6.5.0-142312122121-generic
+
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04
+DISTRIB_CODENAME=jammy
+DISTRIB_DESCRIPTION="Ubuntu 22.04.5 LTS"
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+
+x86_64
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-01">
+    <Comment>DB 계정 목록 조회 / DB 설치 시 기본/불필요 계정이 없으면 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
++-----------+-------------+-------------------------------------------+
+| Host      | User        | authentication_string                     |
++-----------+-------------+-------------------------------------------+
+| localhost | mariadb.sys |                                           |
+| localhost | root        | *2257BCCAC0FFC05A71C444C064E9EE45CB49598D |
+| localhost | mysql       | invalid                                   |
++-----------+-------------+-------------------------------------------+
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-02">
+    <Comment>패스워드 정책 및 취약한 계정 점검 / 계정명과 동일/NULL 패스워드 사용 안하면 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+
+
++-----------+-------------+-----------------------+
+| Host      | User        | authentication_string |
++-----------+-------------+-----------------------+
+| localhost | mariadb.sys |                       |
++-----------+-------------+-----------------------+
+
++-----------+-------------+----------+
+| Host      | User        | Password |
++-----------+-------------+----------+
+| localhost | mariadb.sys |          |
++-----------+-------------+----------+
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-03">
+    <Comment>GRANT 권한 보유 계정 / GRANT ALL 권한이 관리자 외에는 없음이 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
++-----------+-------+------------+
+| Host      | User  | Grant_priv |
++-----------+-------+------------+
+| localhost | root  | Y          |
+| localhost | mysql | Y          |
++-----------+-------+------------+
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-04">
+    <Comment>mysql.user 테이블 SELECT 권한 보유 계정 / mysql.user 접근 권한이 최소화되어 있으면 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
++-----------+-------+-------------+
+| Host      | User  | Select_priv |
++-----------+-------+-------------+
+| localhost | root  | Y           |
+| localhost | mysql | Y           |
++-----------+-------+-------------+
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-05">
+    <Comment>my.cnf user 설정 및 MariaDB 프로세스 확인 / my.cnf의 user 설정 적정, 프로세스 정상 동작 시 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+# 4. "~/.my.cnf" to set user-specific options.
+
+mysql    1004016       1  0 10:57 ?        00:00:04 /usr/sbin/mariadbd
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-06">
+    <Comment>my.cnf 파일 권한 / 초기화 파일 권한이 640 이하이면 양호</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+-rw-r--r-- 1 root root 1126 May  7 14:33 /etc/mysql/my.cnf
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-07">
+    <Comment>계정별 패스워드 및 plugin 확인 / sha256 이상 알고리즘 사용 시 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
++-----------+-------------+-------------------------------------------+-------------------------------------------+
+| Host      | User        | authentication_string                     | Password                                  |
++-----------+-------------+-------------------------------------------+-------------------------------------------+
+| localhost | mariadb.sys |                                           |                                           |
+| localhost | root        | *2257BCCAC0FFC05A71C444C064E9EE45CB49598D | *2257BCCAC0FFC05A71C444C064E9EE45CB49598D |
+| localhost | mysql       | invalid                                   | invalid                                   |
++-----------+-------------+-------------------------------------------+-------------------------------------------+
+
++-----------+-------------+-----------------------+------------+
+| Host      | User        | plugin                | hash       |
++-----------+-------------+-----------------------+------------+
+| localhost | mariadb.sys | mysql_native_password |            |
+| localhost | root        | mysql_native_password | 3935393844 |
+| localhost | mysql       | mysql_native_password | 76616C6964 |
++-----------+-------------+-----------------------+------------+
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-08">
+    <Comment>로그 설정 확인 / General log와 Slow query log 둘 다 활성화 시 양호</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
++------------------+------------+
+| Variable_name    | Value      |
++------------------+------------+
+| general_log      | OFF        |
+| general_log_file | az001a.log |
++------------------+------------+
+
++---------------------+-----------------+
+| Variable_name       | Value           |
++---------------------+-----------------+
+| slow_launch_time    | 2               |
+| slow_query_log      | OFF             |
+| slow_query_log_file | az001a-slow.log |
++---------------------+-----------------+
+
++---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Variable_name                   | Value                                                                                                                                |
++---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| log_bin                         | OFF                                                                                                                                  |
+| log_bin_basename                |                                                                                                                                      |
+| log_bin_compress                | OFF                                                                                                                                  |
+| log_bin_compress_min_len        | 256                                                                                                                                  |
+| log_bin_index                   |                                                                                                                                      |
+| log_bin_trust_function_creators | OFF                                                                                                                                  |
+| log_disabled_statements         | sp                                                                                                                                   |
+| log_error                       |                                                                                                                                      |
+| log_output                      | FILE                                                                                                                                 |
+| log_queries_not_using_indexes   | OFF                                                                                                                                  |
+| log_slave_updates               | OFF                                                                                                                                  |
+| log_slow_admin_statements       | ON                                                                                                                                   |
+| log_slow_disabled_statements    | sp                                                                                                                                   |
+| log_slow_filter                 | admin,filesort,filesort_on_disk,filesort_priority_queue,full_join,full_scan,query_cache,query_cache_miss,tmp_table,tmp_table_on_disk |
+| log_slow_max_warnings           | 10                                                                                                                                   |
+| log_slow_rate_limit             | 1                                                                                                                                    |
+| log_slow_slave_statements       | ON                                                                                                                                   |
+| log_slow_verbosity              |                                                                                                                                      |
+| log_tc_size                     | 24576                                                                                                                                |
+| log_warnings                    | 2                                                                                                                                    |
++---------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+    ]]></DATA>
+  </CODE>
+  <CODE id="DY-09">
+    <Comment>MariaDB/MySQL 버전 및 패키지 설치 확인 / 최신 보안 패치 버전을 사용하면 양호</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
++----------------------------------+
+| @@version                        |
++----------------------------------+
+| 10.6.22-MariaDB-0ubuntu0.22.04.1 |
++----------------------------------+
+
+ii  libdbd-mysql-perl:amd64                        4.050-5ubuntu0.22.04.1                       amd64        Perl5 database interface to the MariaDB/MySQL database
+ii  libmariadb3:amd64                              1:10.6.22-0ubuntu0.22.04.1                   amd64        MariaDB database client library
+ii  libmysqlclient21:amd64                         8.0.42-0ubuntu0.22.04.2                      amd64        MySQL database client library
+ii  mariadb-client                                 1:10.6.22-0ubuntu0.22.04.1                   all          MariaDB database client (metapackage depending on the latest version)
+ii  mariadb-client-10.6                            1:10.6.22-0ubuntu0.22.04.1                   amd64        MariaDB database client binaries
+ii  mariadb-client-core-10.6                       1:10.6.22-0ubuntu0.22.04.1                   amd64        MariaDB database core client binaries
+ii  mariadb-common                                 1:10.6.22-0ubuntu0.22.04.1                   all          MariaDB common configuration files
+ii  mariadb-server                                 1:10.6.22-0ubuntu0.22.04.1                   all          MariaDB database server (metapackage depending on the latest version)
+ii  mariadb-server-10.6                            1:10.6.22-0ubuntu0.22.04.1                   amd64        MariaDB database server binaries
+ii  mariadb-server-core-10.6                       1:10.6.22-0ubuntu0.22.04.1                   amd64        MariaDB database core server files
+ii  mysql-common                                   5.8+1.0.8                                    all          MySQL database common files, e.g. /etc/mysql/my.cnf
+    ]]></DATA>
+  </CODE>
+  <CODE id="MYCNF">
+    <Comment>my.cnf 전체 내용 / 설정 파일 전문</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+# The MariaDB configuration file
+#
+# The MariaDB/MySQL tools read configuration files in the following order:
+# 0. "/etc/mysql/my.cnf" symlinks to this file, reason why all the rest is read.
+# 1. "/etc/mysql/mariadb.cnf" (this file) to set global defaults,
+# 2. "/etc/mysql/conf.d/*.cnf" to set global options.
+# 3. "/etc/mysql/mariadb.conf.d/*.cnf" to set MariaDB-only options.
+# 4. "~/.my.cnf" to set user-specific options.
+#
+# If the same option is defined multiple times, the last one will apply.
+#
+# One can use all long options that the program supports.
+# Run program with --help to get a list of available options and with
+# --print-defaults to see which it would actually understand and use.
+#
+# If you are new to MariaDB, check out https://mariadb.com/kb/en/basic-mariadb-articles/
+
+#
+# This group is read both by the client and the server
+# use it for options that affect everything
+#
+[client-server]
+# Port or socket location where to connect
+# port = 3306
+socket = /run/mysqld/mysqld.sock
+
+# Import all .cnf files from configuration directory
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+    ]]></DATA>
+  </CODE>
+</CSAP-CCE>

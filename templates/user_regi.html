@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<div class="user-regi-form">
+  <h2>사용자 등록</h2>
+  {% if error %}
+    <p class="message error">{{ error }}</p>
+  {% endif %}
+  {% if success %}
+    <p class="message success">{{ success }}</p>
+  {% endif %}
+  <form id="user-regi-form" method="post">
+    <label for="id">아이디:</label>
+    <input type="text" id="id" name="id" required>
+
+    <label for="lv">레벨:</label>
+    <select id="lv" name="lv" required>
+      <option value="1" selected>일반</option>
+      <option value="3">부서장</option>
+      <option value="9">관리자</option>
+    </select>
+
+    <label for="passwd">비밀번호:</label>
+    <input type="password" id="passwd" name="passwd" required>
+
+    <label for="dept">부서:</label>
+    <input type="text" id="dept" name="dept">
+
+    <label for="dept_name">부서명:</label>
+    <input type="text" id="dept_name" name="dept_name">
+
+    <label for="up_dept">상위부서:</label>
+    <input type="text" id="up_dept" name="up_dept">
+
+    <button type="submit">등록</button>
+  </form>
+</div>
