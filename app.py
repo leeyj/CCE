@@ -102,7 +102,7 @@ def create_app():
         if not uploaded_file or not uploaded_file.filename.endswith('.xml'):
             return "<p>유효한 XML 파일을 업로드해주세요.</p>"
 
-        if system_type not in ('linux', 'windows','nginx','apache','db','k8s'):
+        if system_type not in ('linux', 'windows','nginx','apache','db','k8s','docker'):
             return "<p>알 수 없는 시스템 유형입니다.</p>"
 
         orig_filename = secure_filename(uploaded_file.filename)
@@ -130,6 +130,8 @@ def create_app():
                 return process_db_upload(username,filepath, filename, system_type)
             elif system_type == 'k8s':
                 return process_k8s_upload(username,filepath, filename, system_type)
+            elif system_type == 'docker':
+                return process_docker_upload(username,filepath, filename, system_type)    
         except Exception as e:
             db.session.rollback()
             return f"<p>XML 파싱 중 오류가 발생했습니다: {str(e)}</p>"
