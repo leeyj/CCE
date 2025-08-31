@@ -1,0 +1,47 @@
+<form id="asset-form" method="post" action="{{ url_for('asset_edit', asset_id=asset.id) }}">
+  <div class="form-row">
+    <label for="asset_type">자산종류:</label>
+    <select name="asset_type" id="asset_type" required>
+      <option value="">선택</option>
+      <option value="server" {% if asset.asset_type == 'server' %}selected{% endif %}>서버</option>
+      <option value="cloud" {% if asset.asset_type == 'cloud' %}selected{% endif %}>클라우드</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="ip_address">IP:</label>
+    <input type="text" name="ip_address" id="ip_address" value="{{ asset.ip_address }}" required/>
+  </div>
+  <div class="form-row">
+    <label for="platform">플렛폼:</label>
+    <select name="platform" id="platform" required>
+      <option value="">선택</option>
+      <option value="linux" {% if asset.platform == 'linux' %}selected{% endif %}>linux</option>
+      <option value="windows" {% if asset.platform == 'windows' %}selected{% endif %}>windows</option>
+      <option value="db" {% if asset.platform == 'db' %}selected{% endif %}>db</option>
+      <option value="container" {% if asset.platform == 'container' %}selected{% endif %}>container</option>
+      <option value="nginx" {% if asset.platform == 'nginx' %}selected{% endif %}>nginx</option>
+      <option value="apache" {% if asset.platform == 'apache' %}selected{% endif %}>apache</option>
+      <option value="was" {% if asset.platform == 'was' %}selected{% endif %}>was</option>
+      <option value="k8s" {% if asset.platform == 'k8s' %}selected{% endif %}>k8s</option>
+      <option value="docker" {% if asset.platform == 'docker' %}selected{% endif %}>docker</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <label for="purpose">용도:</label>
+    <input type="text" name="purpose" id="purpose" value="{{ asset.purpose }}" />
+  </div>
+  <div class="form-row">
+    <label for="manager_main">관리자(정):</label>
+    <input type="text" name="manager_main" id="manager_main" value="{{ asset.manager_main }}" />
+  </div>
+  <div class="form-row">
+    <label for="manager_sub">관리자(부):</label>
+    <input type="text" name="manager_sub" id="manager_sub" value="{{ asset.manager_sub }}" />
+  </div>
+  <div class="form-row">
+    <label for="memo">메모:</label>
+    <input type="text" name="memo" id="memo" value="{{ asset.memo }}" />
+  </div>
+
+  <button type="submit">수정 완료</button>
+</form>

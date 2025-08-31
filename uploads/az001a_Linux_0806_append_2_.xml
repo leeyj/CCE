@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CSAP-CCE>
+<Info>
+<ScriptName>linux_v5.1.bin</ScriptName>
+<StartTime>2025-08-07 13:41:36</StartTime>
+<Hostname>az001a</Hostname>
+<Version>
+-e <Kernel> <![CDATA[
+6.5.0-142312122121-generic
+-e ]]> </Kernel>
+-e <Release> <![CDATA[
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04
+DISTRIB_CODENAME=jammy
+DISTRIB_DESCRIPTION="Ubuntu 22.04.5 LTS"
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+-e ]]> </Release>
+</Version>
+-e <Openssl> <![CDATA[
+OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)
+3.0.2-0ubuntu1.19
+-e ]]> </Openssl>
+-e <ipAddress> <![CDATA[
+enx00e04c683587: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.0.20  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::2e0:4cff:fe68:3587  prefixlen 64  scopeid 0x20<link>
+        ether 00:e0:4c:68:35:87  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 88883511  bytes 55215898808 (55.2 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 88883511  bytes 55215898808 (55.2 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp1s0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 50:c2:e8:4c:ba:8f  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+-e ]]> </ipAddress>
+<Port>
+-e <tcpOpen> <![CDATA[
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:32401         0.0.0.0:*               LISTEN      3922024/Plex Media  
+tcp        0      0 0.0.0.0:32400           0.0.0.0:*               LISTEN      3922024/Plex Media  
+tcp        0      0 0.0.0.0:4000            0.0.0.0:*               LISTEN      776213/python       
+tcp        0      0 127.0.0.1:32600         0.0.0.0:*               LISTEN      3922098/Plex Tuner  
+tcp        0      0 127.0.0.1:39823         0.0.0.0:*               LISTEN      3922051/Plex Plug-i 
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      2916694/redis-serve 
+tcp        0      0 0.0.0.0:51413           0.0.0.0:*               LISTEN      2916749/transmissio 
+tcp        0      0 0.0.0.0:9999            0.0.0.0:*               LISTEN      782259/python3      
+tcp        0      0 127.0.0.1:42871         0.0.0.0:*               LISTEN      3922277/Plex Plug-i 
+tcp        0      0 127.0.0.1:5572          0.0.0.0:*               LISTEN      4161789/rclone      
+tcp        0      0 127.0.0.1:37497         0.0.0.0:*               LISTEN      3922370/Plex Plug-i 
+tcp        0      0 127.0.0.1:37455         0.0.0.0:*               LISTEN      3922334/Plex Plug-i 
+tcp        0      0 0.0.0.0:9082            0.0.0.0:*               LISTEN      90599/python        
+tcp        0      0 0.0.0.0:9091            0.0.0.0:*               LISTEN      2916749/transmissio 
+tcp        0      0 0.0.0.0:21              0.0.0.0:*               LISTEN      2515464/vsftpd      
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      2916681/sshd: /usr/ 
+tcp6       0      0 :::19999                :::*                    LISTEN      784620/apache2      
+tcp6       0      0 :::3128                 :::*                    LISTEN      2916780/(squid-1)   
+tcp6       0      0 :::31257                :::*                    LISTEN      784620/apache2      
+tcp6       0      0 :::52000                :::*                    LISTEN      784620/apache2      
+tcp6       0      0 :::51413                :::*                    LISTEN      2916749/transmissio 
+tcp6       0      0 :::5200                 :::*                    LISTEN      2515868/java        
+tcp6       0      0 ::1:6379                :::*                    LISTEN      2916694/redis-serve 
+tcp6       0      0 :::50000                :::*                    LISTEN      784620/apache2      
+tcp6       0      0 :::9090                 :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::5000                 :::*                    LISTEN      2669/./Kavita       
+tcp6       0      0 :::22                   :::*                    LISTEN      2916681/sshd: /usr/ 
+tcp6       0      0 :::80                   :::*                    LISTEN      784620/apache2      
+-e ]]> </tcpOpen>
+-e <udpOpen> <![CDATA[
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+udp        0      0 192.168.0.20:46124      0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 127.0.0.1:50632         0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 192.168.0.20:46954      0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:1901            0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:51413           0.0.0.0:*                           2916749/transmissio 
+udp        0      0 192.168.0.20:36114      0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:32410           0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:32412           0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:32413           0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:32414           0.0.0.0:*                           3922024/Plex Media  
+udp        0      0 0.0.0.0:44922           0.0.0.0:*                           2916780/(squid-1)   
+udp        0      0 127.0.0.1:53640         0.0.0.0:*                           3922024/Plex Media  
+udp6       0      0 :::46068                :::*                                2515868/java        
+udp6       0      0 :::38117                :::*                                2515868/java        
+udp6       0      0 :::54649                :::*                                2515868/java        
+udp6       0      0 :::43247                :::*                                2515868/java        
+udp6       0      0 :::59784                :::*                                2515868/java        
+udp6       0      0 :::43825                :::*                                2515868/java        
+udp6       0      0 :::56667                :::*                                2515868/java        
+udp6       0      0 :::36527                :::*                                2515868/java        
+udp6       0      0 :::40733                :::*                                2916780/(squid-1)   
+-e ]]> </udpOpen>
+</Port>
+</Info>
+<Code id="U-01">
+<Result>Good</Result>
+<Comment>root 계정의 원격 접속 제한설정이 적용되어 있으므로 양호</Comment>
+<DATA><![CDATA[
+-------------
+cat /etc/ssh/sshd_config | grep PermitRootLogin
+-------------
+PermitRootLogin no
+# the setting of "PermitRootLogin without-password".
+
+-------------
+cat /etc/securetty
+-------------
+cat: /etc/securetty: No such file or directory
+]]></DATA>
+</Code>
+  <Code id="U-02">
+    <Result>Info</Result>
+    <Comment>패스워드 복잡성 설정 확인 필요</Comment>
+    <![CDATA[
+[운영체제 유형] Ubuntu 계열
+[PAM 설정 파일] /etc/pam.d/common-password
+--- /etc/pam.d/common-password 내용 (주석 제외) ---
+
+
+
+password	[success=1 default=ignore]	pam_unix.so obscure yescrypt
+password	requisite			pam_deny.so
+password	required			pam_permit.so
+
+[pam_pwquality.so 설정 라인]
+
+minlen (최소 길이): 설정없음 (기본 8)
+minclass (문자 종류): 설정없음 (기본 0)
+
+--- /etc/security/pwquality.conf 내용 ---
+pwquality.conf minlen: 설정없음
+pwquality.conf minclass: 설정없음
+
+[진단]
+pam_pwquality.so 관련 설정을 찾을 수 없습니다. 구성 확인 필요
+    ]]>
+  </Code>
+<Code id="U-03">
+<Result>Weak</Result>
+<Comment>계정잠금 임계값 설정이 미흡(5회 초과)하므로 취약</Comment>
+※system-auth, password-auth 파일 내 설정 순서가 deny.so 위에 있어야 정상 작동함(rocky는 2번째가 아닐 가능성이 있음)
+※system-auth: 콘솔로그인, su 전환
+※password-auth: x-windows(KDE, Gnome), ssh, vsftp...
+※faillock.conf : RHEL 8 이상부터 사용하는 파일, system-auth, password-auth파일 확인 후 별도 확인 바람
+-e <DATA> <![CDATA[
+-------------
+/etc/pam.d/system-auth | grep auth | grep required | grep deny= 
+-------------
+/etc/pam.d/system-auth 파일이 존재하지 않음
+
+-------------
+cat /etc/pam.d/password-auth | grep auth | grep required | grep deny= 
+-------------
+/etc/pam.d/password-auth 파일이 존재하지 않음
+
+-------------
+cat /etc/pam.d/common-auth | grep auth | grep required | grep deny= 
+-------------
+-------------
+-------------
+
+* faillock deny default = 3
+-e ]]> </DATA>
+</Code>
+
+<Code id="U-04">
+<Result>Weak</Result>
+<Comment>패스워드 최대 사용기간이 적절하게 설정되어 있지 않으므로 취약</Comment>
+<DATA><![CDATA[
+-------------
+PASS_MAX_DAYS 설정 확인
+-------------
+PASS_MAX_DAYS	99999
+
+-------------
+각 계정별 설정 확인
+-------------
+root 99999
+az001a 99999
+AirComix 99999
+
+
+-------------
+계정별 패스워드 만료기간 확인
+-------------
+[root]
+Last password change					: Apr 14, 2023
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+[az001a]
+Last password change					: Apr 28, 2025
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+[AirComix]
+Last password change					: May 14, 2024
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+-------------
+계정별 활성화 여부
+-------------
+root:$y$j9T$d4yjbUs785Ml8pHgY1eEU1$2./aP9Uheuc1/r6rG7lc05wft.nt2O5dQU3aD7lErH/:19461:0:99999:7:::
+daemon:*:19213:0:99999:7:::
+bin:*:19213:0:99999:7:::
+sys:*:19213:0:99999:7:::
+sync:*:19213:0:99999:7:::
+games:*:19805:0:99999:7:::
+man:*:19213:0:99999:7:::
+lp:*:19213:0:99999:7:::
+mail:*:19805:0:99999:7:::
+news:*:19805:0:99999:7:::
+uucp:*:19213:0:99999:7:::
+proxy:*:19213:0:99999:7:::
+www-data:*:19213:0:99999:7:::
+backup:*:19213:0:99999:7:::
+list:*:19213:0:99999:7:::
+irc:*:19805:0:99999:7:::
+gnats:*:19213:0:99999:7:::
+nobody:*:19213:0:99999:7:::
+_apt:*:19213:0:99999:7:::
+systemd-network:*:19213:0:99999:7:::
+systemd-resolve:*:19213:0:99999:7:::
+messagebus:*:19213:0:99999:7:::
+systemd-timesync:*:19213:0:99999:7:::
+pollinate:*:19213:0:99999:7:::
+sshd:*:19213:0:99999:7:::
+syslog:*:19213:0:99999:7:::
+uuidd:*:19213:0:99999:7:::
+tcpdump:*:19213:0:99999:7:::
+tss:*:19213:0:99999:7:::
+usbmux:*:19170:0:99999:7:::
+az001a:$y$j9T$i2MVczOSuPOhDk2EVosB/1$T1ym4/T81DsTaq.eMJf7Q3eVmjbjd65EW9hURGFkQw9:20206:0:99999:7:::
+lxd:!:19170::::::
+vnstat:*:19350:0:99999:7:::
+debian-transmission:*:19353:0:99999:7:::
+redis:*:19357:0:99999:7:::
+fwupd-refresh:*:19399:0:99999:7:::
+plex:!:19449::::::
+tachidesk:!*:20178::::::
+dnsmasq:*:19665:0:99999:7:::
+cockpit-ws:*:19665:0:99999:7:::
+hts:*:19710:0:99999:7:::
+nextpvr:!:19712::::::
+davfs2:*:19717:0:99999:7:::
+ftp:*:19857:0:99999:7:::
+AirComix:$y$j9T$bue5tuTePw2bS0ojm0Nsl.$GWMUxjGbcfAFyQAWuMM9kj3NjdKLtJf6jJUkHKEcgH7:19857:0:99999:7:::
+]]></DATA>
+</Code>
+<Code id="U-05">
+<Result>Good</Result>
+<Comment>shadow 파일에 패스워드를 저장하고 있으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+ls -alL /etc/shadow
+-------------
+-rw-r----- 1 root shadow 1467 May 21 17:46 /etc/shadow
+-e ]]> </DATA>
+</Code>
+<Code id="U-06">
+<Result>Good</Result>
+<Comment>PATH 설정에 '.' or '..'이 포함되어 있지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+PATH 환경변수
+-------------
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+-e ]]> </DATA>
+</Code>
+<Code id="U-07">
+<Result>Good</Result>
+<Comment>소유자가 그룹이 존재하지 않는 파일 및 디렉터리가 존재하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+소유자나 그룹이 존재하지 않는 파일 및 디렉터리 확인
+-------------
+해당사항 없음
+-e ]]> </DATA>
+</Code>
+<Code id="U-08">
+<Result>Good</Result>
+<Comment>/etc/passwd 파일의 퍼미션이 644이하이므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/passwd 파일 소유자 및 권한 확인
+-------------
+-rw-r--r-- 1 root root 2420 May 21 17:46 /etc/passwd
+-e ]]> </DATA>
+</Code>
+<Code id="U-09">
+<Result>Weak</Result>
+<Comment>/etc/shadow 파일의 퍼미션이 400을 초과하므로 취약</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/shadow 파일 소유자 및 권한 확인
+-------------
+-rw-r----- 1 root shadow 1467 May 21 17:46 /etc/shadow
+-e ]]> </DATA>
+</Code>
+<Code id="U-10">
+<Result>Good</Result>
+<Comment>/etc/hosts 파일의 퍼미션이 644이하이므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/hosts 파일 소유자 및 권한 확인
+-------------
+-rw-r--r-- 1 root adm 244 Apr  7 15:48 /etc/hosts
+-e ]]> </DATA>
+</Code>
+<Code id="U-11">
+<Result>Good</Result>
+<Comment>/etc/(x)inetd.conf 파일이 존재하지 않으므로 양호처리 함</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/(x)inetd.conf 파일 소유자 및 권한 확인
+-------------
+/etc/(x)inetd.conf 파일이 존재하지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-12">
+<Result>Good</Result>
+<Comment>/etc/rsyslog.conf 파일의 퍼미션이 644이하이므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/rsyslog.conf 파일 소유자 및 권한 설정
+-------------
+-rw-r--r-- 1 root root 1382 Dec 24  2021 /etc/rsyslog.conf
+-e ]]> </DATA>
+</Code>
+<Code id="U-13">
+<Result>Good</Result>
+<Comment>/etc/services 파일의 퍼미션이 644이하이므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/services 파일 소유자 및 권한 확인
+-------------
+-rw-r--r-- 1 root root 12813 Mar 28  2021 /etc/services
+-e ]]> </DATA>
+</Code>
+<Code id="U-14">
+<Result>Weak</Result>
+<Comment>주요 파일의 권한에 SUID/SGID에 대한 설정이 부여되어 있으므로 취약</Comment>
+-e <DATA> <![CDATA[
+-------------
+주요 파일의 SUID/SGID 설정 확인
+-------------
+/sbin/dump 이 없습니다
+/usr/bin/lpq-lpd 이 없습니다
+-rwsr-xr-x 1 root root 40496 Feb  6  2024 /usr/bin/newgrp
+/sbin/restore 이 없습니다
+/usr/bin/lpr 이 없습니다
+/usr/sbin/lpc 이 없습니다
+-rwxr-sr-x 1 root shadow 26776 Jun 12 23:45 /sbin/unix_chkpwd
+/usr/bin/lpr-lpd 이 없습니다
+/usr/sbin/lpc-lpd 이 없습니다
+/usr/bin/at 이 없습니다
+/usr/bin/lprm 이 없습니다
+/usr/sbin/traceroute 이 없습니다
+/usr/bin/lpq 이 없습니다
+/usr/bin/lprm-lpd 이 없습니다
+-e ]]> </DATA>
+</Code>
+<Code id="U-15">
+<Result>Info</Result>
+<Comment>수동확인 필요</Comment>
+-e <DATA> <![CDATA[
+-------------
+가. 사용자 홈 디렉터리 권한 확인
+-------------
+drwxr-xr-x 21 root root 4900 Jul 11 05:52 /dev
+drwxr-x--- 2 AirComix AirComix 4096 May 14  2024 /home/AirComix
+drwxr-xr-x 32 az001a az001a 4096 Aug  7 01:02 /home/az001a
+drwx------ 10 root root 4096 Jul 25 10:34 /root
+drwxr-xr-x 2 root root 40 Jun 16 11:32 /run/sshd
+drwxr-xr-x 24 root root 580 Aug  6 07:42 /run/systemd
+drwxr-xr-x 2 root root 60 Mar 31 21:51 /run/uuidd
+drwxr-xr-x 2 root ftp 4096 May 14  2024 /srv/ftp
+drwxr-xr-x 2 root root 4096 Apr 18  2022 /usr/games
+drwxr-xr-x 2 root root 20480 Jul 18 06:49 /usr/sbin
+drwxr-xr-x 2 root root 4096 Aug  2 00:00 /var/backups
+drwxrwxr-x 2 root davfs2 4096 Feb 18  2022 /var/cache/davfs2
+drwxr-xr-x 36 man man 4096 Aug  7 03:00 /var/cache/man
+drwxr-x--- 2 pollinate daemon 4096 Dec 31  2022 /var/cache/pollinate
+drwxr-xr-x 2 root root 4096 Apr 18  2022 /var/lib/misc
+drwxrwxrwx 3 az001a az001a 4096 Apr  3  2023 /var/lib/plexmediaserver
+drwxr-x--- 2 redis redis 4096 Aug  7 12:12 /var/lib/redis
+drwxr-xr-x 2 tachidesk tachidesk 4096 May  8  2023 /var/lib/tachidesk
+drwxr-xr-x 2 tss tss 4096 Jan 26  2022 /var/lib/tpm
+drwxr-xr-x 4 root root 4096 Dec 27  2022 /var/lib/transmission-daemon
+drwxr-xr-x 4 root root 4096 Jan  3  2024 /var/lib/tvheadend
+drwxr-xr-x 2 vnstat vnstat 4096 Aug  7 13:40 /var/lib/vnstat
+drwxrwsr-x 2 root mail 4096 Aug  9  2022 /var/mail
+drwx--x--x 2 root root 4096 Mar 31 21:51 /var/snap/lxd/common/lxd
+drwxr-xr-x 3 root root 4096 Jul  9  2023 /var/www
+-------------
+나. 사용자 환경변수 파일의 권한 확인
+-------------
+-rw-r--r-- 1 AirComix AirComix 807 May 14  2024 /home/AirComix/.profile
+-rw-r--r-- 1 AirComix AirComix 3771 May 14  2024 /home/AirComix/.bashrc
+-rw-r--r-- 1 az001a az001a 807 Jan  7  2022 /home/az001a/.profile
+-rw-r--r-- 1 az001a az001a 3771 Jan  7  2022 /home/az001a/.bashrc
+-rw------- 1 az001a az001a 27583 Aug  7 01:02 /home/az001a/.bash_history
+-rw-r--r-- 1 root root 161 Jul  9  2019 /root/.profile
+-rw-r--r-- 1 root root 3106 Oct 15  2021 /root/.bashrc
+-rw------- 1 root root 30923 Jul 25 10:34 /root/.bash_history
+
+-e ]]> </DATA>
+</Code>
+<Code id="U-17">
+<Result>Good</Result>
+<Comment>R 서비스가 동작중이 아니므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+# 동작중인 R 서비스
+-------------
+동작중인 R 서비스가 존재하지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-18">
+<Result>Weak</Result>
+<Comment>/etc/hosts.allow파일 또는 /etc/hosts.deny파일의 권한이 640이상이므로 취약</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/hosts.allow 파일
+-------------
+-rw-r--r-- 1 root root 411 Aug  9  2022 /etc/hosts.allow
+
+# /etc/hosts.allow: list of hosts that are allowed to access the system.
+#                   See the manual pages hosts_access(5) and hosts_options(5).
+#
+# Example:    ALL: LOCAL @some_netgroup
+#             ALL: .foobar.edu EXCEPT terminalserver.foobar.edu
+#
+# If you're going to protect the portmapper use the name "rpcbind" for the
+# daemon name. See rpcbind(8) and rpc.mountd(8) for further information.
+#
+
+-------------
+/etc/hosts.deny 파일
+-------------
+-rw-r--r-- 1 root root 711 Aug  9  2022 /etc/hosts.deny
+
+# /etc/hosts.deny: list of hosts that are _not_ allowed to access the system.
+#                  See the manual pages hosts_access(5) and hosts_options(5).
+#
+# Example:    ALL: some.host.name, .some.domain
+#             ALL EXCEPT in.fingerd: other.host.name, .other.domain
+#
+# If you're going to protect the portmapper use the name "rpcbind" for the
+# daemon name. See rpcbind(8) and rpc.mountd(8) for further information.
+#
+# The PARANOID wildcard matches any host whose name does not match its
+# address.
+#
+# You may wish to enable this to ensure any programs that don't
+# validate looked up hostnames still leave understandable logs. In past
+# versions of Debian this has been the default.
+# ALL: PARANOID
+
+-------------
+iptables 설정
+-------------
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+f2b-sshd   tcp  --  0.0.0.0/0            0.0.0.0/0            multiport dports 22
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain f2b-sshd (1 references)
+target     prot opt source               destination         
+RETURN     all  --  0.0.0.0/0            0.0.0.0/0           
+
+-------------
+firewalld 설정
+-------------
+./de.sh: 1268: firewall-cmd: not found
+-e ]]> </DATA>
+</Code>
+<Code id="U-19">
+<Result>Good</Result>
+<Comment>cron 파일이 존재하지 않으므로 양호처리 함</Comment>
+-e <DATA> <![CDATA[
+-------------
+/etc/cron.allow 파일
+-------------
+/etc/cron.allow 파일이 존재하지 않음
+-------------
+/etc/cron.deny 파일
+-------------
+/etc/cron.deny 파일이 존재하지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-20">
+<Result>Good</Result>
+<Comment>현재 finger 서비스가 동작하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+finger 서비스 동작 여부 확인
+-------------
+finger 서비스가 동작중이지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-21">
+<Result>Info</Result>
+<Comment>FTP 서비스가 동작중으로 anonymous 접속확인 필요</Comment>
+-e <DATA> <![CDATA[
+-------------
+# ps -ef | grep ftp
+-------------
+az001a    793801  793799  0 12:33 ?        00:00:00 /usr/lib/openssh/sftp-server
+az001a    793862  793861  0 12:36 ?        00:00:00 /usr/lib/openssh/sftp-server
+root      804207  803714  0 13:41 pts/1    00:00:00 grep ftp
+root     2515464       1  0 Jun02 ?        00:00:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+-------------
+# cat /etc/passwd | grep ftp
+-------------
+ftp:x:121:129:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin
+-------------
+# cat /etc/vsftpd/vsftpd.conf | grep anonymous_enable
+-------------
+/etc/vsftpd/vsftpd.conf 파일이 존재하지 않음
+-------------
+# cat /etc/vsftpd.conf
+-------------
+# Example config file /etc/vsftpd.conf
+#
+# The default compiled in settings are fairly paranoid. This sample file
+# loosens things up a bit, to make the ftp daemon more usable.
+# Please see vsftpd.conf.5 for all compiled in defaults.
+#
+# READ THIS: This example file is NOT an exhaustive list of vsftpd options.
+# Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's
+# capabilities.
+#
+#
+# Run standalone?  vsftpd can run either from an inetd or as a standalone
+# daemon started from an initscript.
+listen=YES
+#
+# This directive enables listening on IPv6 sockets. By default, listening
+# on the IPv6 "any" address (::) will accept connections from both IPv6
+# and IPv4 clients. It is not necessary to listen on *both* IPv4 and IPv6
+# sockets. If you want that (perhaps because you want to listen on specific
+# addresses) then you must run two copies of vsftpd with two configuration
+# files.
+listen_ipv6=NO
+#
+# Allow anonymous FTP? (Disabled by default).
+anonymous_enable=NO
+#
+# Uncomment this to allow local users to log in.
+local_enable=YES
+#
+# Uncomment this to enable any form of FTP write command.
+write_enable=YES
+#
+# Default umask for local users is 077. You may wish to change this to 022,
+# if your users expect that (022 is used by most other ftpd's)
+#local_umask=022
+#
+# Uncomment this to allow the anonymous FTP user to upload files. This only
+# has an effect if the above global write enable is activated. Also, you will
+# obviously need to create a directory writable by the FTP user.
+#anon_upload_enable=YES
+#
+# Uncomment this if you want the anonymous FTP user to be able to create
+# new directories.
+#anon_mkdir_write_enable=YES
+#
+# Activate directory messages - messages given to remote users when they
+# go into a certain directory.
+dirmessage_enable=YES
+#
+# If enabled, vsftpd will display directory listings with the time
+# in  your  local  time  zone.  The default is to display GMT. The
+# times returned by the MDTM FTP command are also affected by this
+# option.
+use_localtime=YES
+#
+# Activate logging of uploads/downloads.
+xferlog_enable=YES
+#
+# Make sure PORT transfer connections originate from port 20 (ftp-data).
+connect_from_port_20=YES
+#
+# If you want, you can arrange for uploaded anonymous files to be owned by
+# a different user. Note! Using "root" for uploaded files is not
+# recommended!
+#chown_uploads=YES
+#chown_username=whoever
+#
+# You may override where the log file goes if you like. The default is shown
+# below.
+#xferlog_file=/var/log/vsftpd.log
+#
+# If you want, you can have your log file in standard ftpd xferlog format.
+# Note that the default log file location is /var/log/xferlog in this case.
+#xferlog_std_format=YES
+#
+# You may change the default value for timing out an idle session.
+#idle_session_timeout=600
+#
+# You may change the default value for timing out a data connection.
+#data_connection_timeout=120
+#
+# It is recommended that you define on your system a unique user which the
+# ftp server can use as a totally isolated and unprivileged user.
+#nopriv_user=ftpsecure
+#
+# Enable this and the server will recognise asynchronous ABOR requests. Not
+# recommended for security (the code is non-trivial). Not enabling it,
+# however, may confuse older FTP clients.
+#async_abor_enable=YES
+#
+# By default the server will pretend to allow ASCII mode but in fact ignore
+# the request. Turn on the below options to have the server actually do ASCII
+# mangling on files when in ASCII mode.
+# Beware that on some FTP servers, ASCII support allows a denial of service
+# attack (DoS) via the command "SIZE /big/file" in ASCII mode. vsftpd
+# predicted this attack and has always been safe, reporting the size of the
+# raw file.
+# ASCII mangling is a horrible feature of the protocol.
+#ascii_upload_enable=YES
+#ascii_download_enable=YES
+#
+# You may fully customise the login banner string:
+#ftpd_banner=Welcome to blah FTP service.
+#
+# You may specify a file of disallowed anonymous e-mail addresses. Apparently
+# useful for combatting certain DoS attacks.
+#deny_email_enable=YES
+# (default follows)
+#banned_email_file=/etc/vsftpd.banned_emails
+#
+# You may restrict local users to their home directories.  See the FAQ for
+# the possible risks in this before using chroot_local_user or
+# chroot_list_enable below.
+chroot_local_user=YES
+#
+# You may specify an explicit list of local users to chroot() to their home
+# directory. If chroot_local_user is YES, then this list becomes a list of
+# users to NOT chroot().
+# (Warning! chroot'ing can be very dangerous. If using chroot, make sure that
+# the user does not have write access to the top level directory within the
+# chroot)
+#chroot_local_user=YES
+#chroot_list_enable=YES
+# (default follows)
+#chroot_list_file=/etc/vsftpd.chroot_list
+#
+# You may activate the "-R" option to the builtin ls. This is disabled by
+# default to avoid remote users being able to cause excessive I/O on large
+# sites. However, some broken FTP clients such as "ncftp" and "mirror" assume
+# the presence of the "-R" option, so there is a strong case for enabling it.
+ls_recurse_enable=YES
+#
+# Customization
+#
+# Some of vsftpd's settings don't fit the filesystem layout by
+# default.
+#
+# This option should be the name of a directory which is empty.  Also, the
+# directory should not be writable by the ftp user. This directory is used
+# as a secure chroot() jail at times vsftpd does not require filesystem
+# access.
+secure_chroot_dir=/var/run/vsftpd/empty
+#
+# This string is the name of the PAM service vsftpd will use.
+pam_service_name=vsftpd
+#
+# This option specifies the location of the RSA certificate to use for SSL
+# encrypted connections.
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+ssl_enable=NO
+
+#
+# Uncomment this to indicate that vsftpd use a utf8 filesystem.
+utf8_filesystem=YES
+
+pasv_enable=YES
+pasv_min_port=2020
+pasv_max_port=2030
+-e ]]> </DATA>
+</Code>
+<Code id="U-22">
+<Result>Good</Result>
+<Comment>현재 rsh, rlogin, rexec 서비스가 동작하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+r서비스 동작 여부 확인
+-------------
+r계열 서비스가 동작중이지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-23">
+<Result>Good</Result>
+<Comment>echo, discard, daytime, chargen 서비스가 동작하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+DoS 공격에 취약한 서비스 동작 여부 확인
+-------------
+DoS 공격에 취약한 서비스(echo, discard, daytime, chargen)가 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-24">
+<Result>Good</Result>
+<Comment>현재 NFS 서비스가 동작하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+NFS 서비스 동작 여부 확인
+-------------
+NFS 서비스 관련 데몬(mountd|nfs)이 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-25">
+<Result>Good</Result>
+<Comment>NFS 서비스가 비활성화되어 있으므로 양호처리 함</Comment>
+-e <DATA> <![CDATA[
+-------------
+NFS 서비스 동작 여부 확인
+-------------
+NFS 서비스 관련 데몬(mountd|nfs)이 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-26">
+<Result>Good</Result>
+<Comment>automount 데몬이 동작중이지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+automount 데몬 동작 여부
+-------------
+automound 서비스가 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-27">
+<Result>Good</Result>
+<Comment>현재 RPC 서비스가 동작하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+RPC 서비스 동작여부 확인
+-------------
+RPC 서비스가 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-28">
+<Result>Good</Result>
+<Comment>NIS , NIS+ 서비스가 동작중이지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+NIS, NIS+ 서비스 동작여부 확인
+-------------
+NIS, NIS+ 서비스가 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-29">
+<Result>Good</Result>
+<Comment>tftp, talk 서비스가 동작하지 않으므로 양호</Comment>
+-e <DATA> <![CDATA[
+-------------
+tftp, talk 서비스 동작 여부
+-------------
+tftp, talk, ntalk 서비스(tftp|talk|ntalk)가 비활성화되어있음
+-e ]]> </DATA>
+</Code>
+<Code id="U-30">
+<Result>Good</Result>
+<Comment>Sendmail 서비스가 동작중이지 않으므로 양호</Comment>
+<DATA> <![CDATA[
+-------------
+Sendmail/postfix 서비스 동작 여부
+-------------
+Sendmail/postfix 서비스가 동작중이지 않음
+
+]]> </DATA>
+</Code>
+<Code id="U-31">
+<Result>Good</Result>
+<Comment>Sendmail 서비스가 동작중이지 않으므로 양호처리 함</Comment>
+<DATA> <![CDATA[
+-------------
+Sendmail/postfix 서비스 동작 여부
+-------------
+Sendmail/postfix 서비스가 동작중이지 않음
+
+]]> </DATA>
+</Code>
+<Code id="U-32">
+<Result>Good</Result>
+<Comment>Sendmail 서비스가 동작중이지 않으므로 양호처리 함</Comment>
+-e <DATA> <![CDATA[
+-------------
+Sendmail/postfix 서비스 동작 여부
+-------------
+Sendmail/postfix 서비스가 동작중이지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-33">
+<Result>Good</Result>
+<Comment>DNS 서비스를 사용하지 않으므로 양호처리 함</Comment>
+-e <DATA> <![CDATA[
+-------------
+DNS 서비스 동작 여부
+-------------
+DNS 서비스를 사용하고 있지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-34">
+<Result>Good</Result>
+<Comment>DNS 서비스를 사용하지 않으므로 양호처리 함</Comment>
+-e <DATA> <![CDATA[
+-------------
+DNS 서비스 동작 여부
+-------------
+DNS 서비스를 사용하고 있지 않음
+-e ]]> </DATA>
+</Code>
+<Code id="U-35">
+<Result>Info</Result>
+<Comment>최신 보안패치 및 벤더 권고사항 확인필요</Comment>
+-e <DATA> <![CDATA[
+-------------
+Linux Version
+-------------
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=22.04
+DISTRIB_CODENAME=jammy
+DISTRIB_DESCRIPTION="Ubuntu 22.04.5 LTS"
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+-------------
+Kernel Version
+-------------
+6.5.0-142312122121-generic
+-------------
+Debian Linux Detail Version
+-------------
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+-e ]]> </DATA>
+</Code>
+<Code id="U-36">
+<Result>Info</Result>
+<Comment>로그기록의 검토/분석/리포트 작성 및 보고 등이 정기적으로 이루어지는지 검토필요</Comment>
+-e <DATA> <![CDATA[
+-------------
+로그의 검토/분석 방법
+-------------
+인터뷰내용 작성필요
+-e ]]> </DATA>
+</Code>
+</CSAP-CCE>
