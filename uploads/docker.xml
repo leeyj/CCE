@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <CSAP-CCE>
   <info>
     <index>Docker</index>
@@ -238,3 +239,245 @@ root:root 755
   </CODE>
 </CSAP-CCE>
 
+=======
+<CSAP-CCE>
+  <info>
+    <index>Docker</index>
+    <IPAddress>172.25.1.144</IPAddress>
+    <HOSTNAME>cocktail-master01</HOSTNAME>
+  </info>
+  <CODE Id="DK-01">
+    <Comment>가. Docker 버전 확인 / 나. 패키지 설치 여부 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+./docker.sh: line 61: docker: command not found\nSource 버전으로 설치됨
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-02">
+    <Comment>가. docker 그룹 / 나. root 그룹 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+\nroot:x:0:cocktail,user1
+user1:x:1003:root
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-03">
+    <Comment>가. /usr/bin/docker audit 설정 확인</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-04">
+    <Comment>가. /var/lib/docker audit 설정 확인</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-05">
+    <Comment>가. /etc/docker audit 설정 확인</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-06">
+    <Comment>가. docker.service audit 설정 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-07">
+    <Comment>가. docker.socket audit 설정 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-08">
+    <Comment>가. /etc/default/docker audit 설정 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-09">
+    <Comment>가. 컨테이너 간 네트워크 통신 제한 설정 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+nobody      1684    1370  0 May08 ?        02:24:53 /bin/node_exporter --path.procfs=/host/proc --path.sysfs=/host/sys --path.rootfs=/host/root --path.udev.data=/host/root/run/udev/data -->
+cocktail 2731526 2728181  0 10:36 pts/0    00:00:00 /bin/bash ./docker.sh
+cocktail 2731944 2731526  0 10:36 pts/0    00:00:00 /bin/bash ./docker.sh
+cocktail 2731946 2731944  0 10:36 pts/0    00:00:00 grep docker
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-10">
+    <Comment>가. 인증 활성화 여부 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+nobody      1684    1370  0 May08 ?        02:24:53 /bin/node_exporter --path.procfs=/host/proc --path.sysfs=/host/sys --path.rootfs=/host/root --path.udev.data=/host/root/run/udev/data -->
+cocktail 2731526 2728181  0 10:36 pts/0    00:00:00 /bin/bash ./docker.sh
+cocktail 2731949 2731526  0 10:36 pts/0    00:00:00 /bin/bash ./docker.sh
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-11">
+    <Comment>가. legacy registry (v1) 비활성화 확인</Comment>
+    <Result>Info</Result>
+<DATA><![CDATA[
+nobody      1684    1370  0 May08 ?        02:24:53 /bin/node_exporter --path.procfs=/host/proc --path.sysfs=/host/sys --path.rootfs=/host/root --path.udev.data=/host/root/run/udev/data -->
+cocktail 2731526 2728181  0 10:36 pts/0    00:00:00 /bin/bash ./docker.sh
+cocktail 2731953 2731526  0 10:36 pts/0    00:00:00 /bin/bash ./docker.sh
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-12">
+    <Comment>가. 컨테이너 추가 권한 획득 제한 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-13">
+    <Comment>가. docker.service 소유권 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+파일없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-14">
+    <Comment>가. docker.service 파일 권한 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+파일없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-15">
+    <Comment>가. docker.socket 소유권 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+파일없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-16">
+    <Comment>가. docker.socket 권한 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+파일없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-17">
+    <Comment>가. /etc/docker 소유권 확인</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+root:root 755
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-18">
+    <Comment>가. /etc/docker 권한 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+root:root 755
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-19">
+    <Comment>가. docker.sock 소유권 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-20">
+    <Comment>가. docker.sock 권한 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-21">
+    <Comment>가. daemon.json 소유권 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-22">
+    <Comment>가. daemon.json 권한 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-23">
+    <Comment>가. /etc/default/docker 소유권 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-24">
+    <Comment>가. /etc/default/docker 권한 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+없음
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-25">
+    <Comment>가. 컨테이너별 계정 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-26">
+    <Comment>가. DOCKER_CONTENT_TRUST 값 확인</Comment>
+    <Result>Weak</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-27">
+    <Comment>가. SELinux 설정 여부 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-28">
+    <Comment>가. ssh 사용 컨테이너 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-29">
+    <Comment>가. 컨테이너 privileged 포트 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-30">
+    <Comment>가. 컨테이너별 PidsLimit 값 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-31">
+    <Comment>가. docker0 네트워크 사용 여부 확인</Comment>
+    <Result>Info</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+  <CODE Id="DK-32">
+    <Comment>가. host user namespace 공유 확인</Comment>
+    <Result>Good</Result>
+    <DATA><![CDATA[
+
+    ]]></DATA>
+  </CODE>
+</CSAP-CCE>
+
+>>>>>>> e4941da336c627a1f536431a3a72cd298a47b9df

@@ -30,3 +30,36 @@
     {% endfor %}
   </tbody>
 </table>
+
+<table class="asset-info">
+  <thead>
+    <tr>
+      <th>순번</th><th>자산종류</th><th>IP</th><th>플렛폼</th><th>용도</th>
+      <th>관리자(정)</th><th>관리자(부)</th><th>메모</th><th>수정</th><th>삭제</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for asset in assets %}
+      <tr>
+        <td data-label="순번">{{ asset.id }}</td>
+        <td data-label="자산종류">{{ asset.asset_type }}</td>
+        <td data-label="IP">{{ asset.ip_address }}</td>
+        <td data-label="플렛폼">{{ asset.platform }}</td>
+        <td data-label="용도">{{ asset.purpose }}</td>
+        <td data-label="관리자(정)">{{ asset.manager_main }}</td>
+        <td data-label="관리자(부)">{{ asset.manager_sub }}</td>
+        <td data-label="메모">{{ asset.memo }}</td>
+        <td data-label="수정">
+          <button class="btn-asset-edit" data-url="{{ url_for('asset_edit', asset_id=asset.id) }}">
+            수정
+          </button>
+        </td>
+        <td data-label="삭제">
+          <form action="{{ url_for('asset_delete', asset_id=asset.id) }}" method="post" style="display:inline;" onsubmit="return confirm('정말 삭제하시겠습니까?');">
+            <button type="submit">삭제</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
