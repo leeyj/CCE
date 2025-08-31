@@ -4,6 +4,76 @@ from datetime import datetime
 from flask import render_template
 from .models import db,UploadFile, UploadRecord, IPAddress
 
+def process_docker_upload(username,filepath, filename, system_type):
+    tree = ET.parse(filepath)
+    root = tree.getroot()
+
+    upload_file = UploadFile(
+        filename=filename,
+        upload_time=datetime.utcnow(),
+        systems=system_type,
+        reg_name = username
+    )
+    db.session.add(upload_file)
+    db.session.flush()
+
+
+    ip_text = root.findtext('.//IPAddress', default='').strip()
+    ip_addresses = [ip_text] if ip_text else []
+
+    indexk8s = root.findtext('.//index',default='docker').strip()
+
+   
+    pattern = re.compile(r'DK-\d{2}')
+
+    results = []
+    records_to_add = []
+    
+
+    for code in root.findall('.//CODE'):
+        code_id = code.get('Id')
+        if code_id and pattern.match(code_id):
+            result_text = code.findtext('Result', default='N/A')
+            comment_text = code.findtext('Comment', default='')
+            data_elem = code.find('DATA')
+            data_text = data_elem.text.strip() if data_elem is not None and data_elem.text else ''
+            ip_value = ip_addresses[0] if ip_addresses else None
+
+            record = UploadRecord(
+                upload_file_id=upload_file.id,
+                item_id=code_id,
+                result=result_text,
+                comment=comment_text,
+                data=data_text,
+                ip=ip_value,
+                reg_name = username
+            )
+            records_to_add.append(record)
+
+            results.append({
+                'id': code_id,
+                'result': result_text,
+                'comment': comment_text,
+                'data': data_text,
+                'ip_addresses': ip_addresses
+            })
+
+    for record in records_to_add:
+        db.session.add(record)
+
+    for ip_str in ip_addresses:
+        ip_record = IPAddress(upload_file_id=upload_file.id, ip=ip_str)
+        db.session.add(ip_record)
+
+    db.session.commit()
+
+    if not results:
+        return "<p>DK-01부터 DK-032까지 점검 항목 결과가 존재하지 않습니다.</p>"
+
+    return render_template('results_content.html', results=results, ip_addresses=ip_addresses)
+
+
+
 def process_k8s_upload(username,filepath, filename, system_type):
     tree = ET.parse(filepath)
     root = tree.getroot()

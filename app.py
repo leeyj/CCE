@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 
 from CCE.models import db, UploadFile, UploadRecord, IPAddress,AssetInfo,Users,Depts
 from CCE.upload_processors import *
-
+from sqlalchemy import or_
 
 def create_app():
        
@@ -102,7 +102,7 @@ def create_app():
         if not uploaded_file or not uploaded_file.filename.endswith('.xml'):
             return "<p>유효한 XML 파일을 업로드해주세요.</p>"
 
-        if system_type not in ('linux', 'windows','nginx','apache','db','k8s'):
+        if system_type not in ('linux', 'windows','nginx','apache','db','k8s','docker'):
             return "<p>알 수 없는 시스템 유형입니다.</p>"
 
         orig_filename = secure_filename(uploaded_file.filename)
@@ -130,6 +130,8 @@ def create_app():
                 return process_db_upload(username,filepath, filename, system_type)
             elif system_type == 'k8s':
                 return process_k8s_upload(username,filepath, filename, system_type)
+            elif system_type == 'docker':
+                return process_docker_upload(username,filepath, filename, system_type)    
         except Exception as e:
             db.session.rollback()
             return f"<p>XML 파싱 중 오류가 발생했습니다: {str(e)}</p>"
@@ -137,6 +139,8 @@ def create_app():
     @app.route('/records_content')
     @login_required
     def records_content():
+        
+
         # 페이지 번호 파라미터 (기본값=1)
         page = request.args.get('page', 1, type=int)
         per_page = 20
@@ -146,22 +150,37 @@ def create_app():
         is_admin = False
         if user and hasattr(user, 'lv') and user.lv == 9:  # lv=9를 admin으로 가정
             is_admin = True
-            
-        if is_admin:
-            # admin은 모든 파일 보여줌
-            pagination = UploadFile.query.order_by(UploadFile.upload_time.desc()).paginate(page=page, per_page=per_page, error_out=False)
-        else:
-            # 일반 사용자는 본인 파일만
-            pagination = UploadFile.query.filter_by(reg_name=username).order_by(UploadFile.upload_time.desc()).paginate(page=page, per_page=per_page, error_out=False)
+
+        # 단일 검색어(keyword) 값 받기
+        keyword = request.args.get('keyword', '', type=str).strip()
+
+        query = UploadFile.query
+
+        # 일반 사용자는 본인 파일만 조회 가능
+        if not is_admin:
+            query = query.filter_by(reg_name=username)
+
+        if keyword:
+            # ip_addresses 관계(join) 필요, UploadIP는 IP주소 관계 테이블 모델명
+            query = query.join(UploadFile.ip_addresses, isouter=True).filter(
+                or_(
+                    UploadFile.reg_name.ilike(f'%{keyword}%'),
+                    UploadFile.systems.ilike(f'%{keyword}%'),
+                    IPAddress.ip.ilike(f'%{keyword}%')
+                )
+            ).distinct()
+
+        # 업로드시간 내림차순 정렬 후 페이지네이션
+        pagination = query.order_by(UploadFile.upload_time.desc())\
+            .paginate(page=page, per_page=per_page, error_out=False)
         files = pagination.items
-            
-        
-        '''
-        pagination = UploadFile.query.order_by(UploadFile.upload_time.desc()).paginate(page=page, per_page=per_page, error_out=False)
-        files = pagination.items
-        '''
-        
-        return render_template('records_content.html', files=files,pagination=pagination)
+
+        # 템플릿에서 검색어 유지용으로 keyword 전달
+        return render_template('records_content.html', files=files,
+                               pagination=pagination,
+                               keyword=keyword)
+
+
         
 
     @app.route('/file_detail')
@@ -251,9 +270,20 @@ def create_app():
             asset.memo = request.form.get('memo')
             db.session.commit()
             flash('자산정보가 수정되었습니다.')
+            #if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                # AJAX 요청이면 오른쪽 내용 영역만 새로 렌더링해서 반환
+                # 자산목록 페이지 렌더링 부분 템플릿(부분)으로 변경할 것
+            #    assets = AssetInfo.query.all()  # 필요한 쿼리로 변경
+            #    return render_template('/asset_list.html', assets=assets)
+            
+            #else:
+                # 일반 요청시 전체 페이지 리다이렉트
             return redirect(url_for('asset_info'))
 
-        return render_template('asset_edit.html', asset=asset)
+        # GET 요청
+        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return render_template('partial_asset_edit_form.html', asset=asset)
+        return render_template('asset_edit.html', asset=asset)  # 전체 페이지 버전(필요한 경우)
     
     @app.route('/user_regi', methods=['GET', 'POST'])
     def user_regi():

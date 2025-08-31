@@ -3,7 +3,7 @@
     <tr>
       <th>구분</th>
       <th>다운로드 링크</th>
-      <th>버전</th>
+      <th>비고</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
 		  nginx용 다운로드
 		  </a>
 	  </td>
-	  <td>1.0</td>
+	  <td>압축파일 비번:qhdks00!!</td>
 	</tr>
 	<tr>
 	 <td>WEB-Apache</td>
@@ -55,7 +55,7 @@
 	<tr>
 	 <td>K8S Master</td>
 	 <td>
-	    <a href="{{ url_for('download_static', filename='k8s_master.zip') }}"  download="pc.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
+	    <a href="{{ url_for('download_static', filename='k8s_master.zip') }}"  download="k8s_master.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
 		  쿠버네티스(마스터) 다운로드
 		  </a>
 	  </td>
@@ -64,8 +64,17 @@
 	<tr>
 	 <td>K8S Worker</td>
 	 <td>
-	    <a href="{{ url_for('download_static', filename='k8s_worker.zip') }}"  download="pc.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
+	    <a href="{{ url_for('download_static', filename='k8s_worker.zip') }}"  download="k8s_worker.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
 		  쿠버네티스(워커) 다운로드
+		  </a>
+	  </td>
+	  <td>1.0</td>
+	</tr>
+    <tr>
+	 <td>Docker</td>
+	 <td>
+	    <a href="{{ url_for('download_static', filename='docker.zip') }}"  download="docker.zip" style="color: #2980b9; text-decoration: none; font-weight: bold;">
+		  도커 다운로드
 		  </a>
 	  </td>
 	  <td>1.0</td>

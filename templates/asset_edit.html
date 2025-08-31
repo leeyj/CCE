@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head><title>자산정보 수정</title></head>
+<head><title>자산정보 수정</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
 <body>
   <h3>자산정보 수정</h3>
-  <form method="post">
+  <form id="asset-form" method="post" action="{{ url_for('asset_edit', asset_id=asset.id) }}">
     <label>자산종류:
       <select name="asset_type" required>
         <option value="server" {% if asset.asset_type == 'server' %}selected{% endif %}>서버</option>
@@ -13,13 +15,15 @@
     <label>IP: <input type="text" name="ip_address" value="{{ asset.ip_address }}" required></label><br><br>
     <label>플렛폼:
       <select name="platform" required>
-        <option value="OS" {% if asset.platform == 'OS' %}selected{% endif %}>OS</option>
-        <option value="WEB" {% if asset.platform == 'WEB' %}selected{% endif %}>WEB</option>
-        <option value="WAS" {% if asset.platform == 'WAS' %}selected{% endif %}>WAS</option>
-        <option value="DB" {% if asset.platform == 'DB' %}selected{% endif %}>DB</option>
-        <option value="CONTAINER" {% if asset.platform == 'CONTAINER' %}selected{% endif %}>CONTAINER</option>
-        <option value="VM" {% if asset.platform == 'VM' %}selected{% endif %}>VM</option>
-        <option value="mgnt" {% if asset.platform == 'mgnt' %}selected{% endif %}>mgnt</option>
+        <option value="linux" {% if asset.platform == 'linux' %}selected{% endif %}>linux</option>
+        <option value="windows" {% if asset.platform == 'windows' %}selected{% endif %}>windows</option>
+        <option value="db" {% if asset.platform == 'db' %}selected{% endif %}>db</option>
+        <option value="container" {% if asset.platform == 'container' %}selected{% endif %}>container</option>
+        <option value="nginx" {% if asset.platform == 'nginx' %}selected{% endif %}>nginx</option>
+        <option value="apache" {% if asset.platform == 'apache' %}selected{% endif %}>apache</option>
+        <option value="was" {% if asset.platform == 'was' %}selected{% endif %}>was</option>
+        <option value="k8s" {% if asset.platform == 'k8s' %}selected{% endif %}>k8s</option>
+        <option value="docker" {% if asset.platform == 'docker' %}selected{% endif %}>docker</option>
       </select>
     </label><br><br>
     <label>용도: <input type="text" name="purpose" value="{{ asset.purpose }}"></label><br><br>

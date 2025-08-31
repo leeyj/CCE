@@ -32,13 +32,16 @@
             <label for="platform">플렛폼:</label>
             <select name="platform" id="platform" required>
               <option value="">선택</option>
-              <option value="OS">OS</option>
-              <option value="WEB">WEB</option>
-              <option value="WAS">WAS</option>
-              <option value="DB">DB</option>
-              <option value="CONTAINER">CONTAINER</option>
-              <option value="VM">VM</option>
-              <option value="mgnt">mgnt</option>
+              <option value="linux">linux</option>
+              <option value="windows">windows</option>
+              <option value="db">db</option>
+              <option value="container">container</option>
+              <option value="nginx">nginx</option>
+              <option value="apache">apache</option>
+              <option value="was">was</option>
+              <option value="k8s">k8s</option>
+              <option value="docker">docker</option>
+              
             </select>
           </div>
 
@@ -100,10 +103,8 @@
               <td data-label="관리자(부)">{{ asset.manager_sub }}</td>
               <td data-label="메모">{{ asset.memo }}</td>
               <td data-label="수정">
-                <form action="{{ url_for('asset_edit', asset_id=asset.id) }}" method="get" style="display:inline;">
-                  <button type="submit">수정</button>
-                </form>
-              </td>
+                  <button class="btn-asset-edit" data-url="{{ url_for('asset_edit', asset_id=asset.id) }}">수정</button>
+                </td>
               <td data-label="삭제">
                 <form action="{{ url_for('asset_delete', asset_id=asset.id) }}" method="post" style="display:inline;" onsubmit="return confirm('정말 삭제하시겠습니까?');">
                   <button type="submit">삭제</button>
